@@ -1,6 +1,6 @@
 {
   "name": "otdf-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Opening the Doors Foundation UI kit: shadcn-vue components themed with the OTDF Aboriginal art style.",
   "files": [

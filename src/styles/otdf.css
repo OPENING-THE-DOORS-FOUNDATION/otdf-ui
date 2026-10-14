@@ -15,6 +15,36 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * The shadcn-vue styles write data-open:, data-closed: and data-checked:, but
+ * reka-ui marks state with data-state="open" / "closed" / "checked". Without
+ * these mappings checked boxes stay white and overlays skip their animations.
+ */
+@custom-variant data-open {
+  &:where([data-state="open"]),
+  &:where([data-open]:not([data-open="false"])) {
+    @slot;
+  }
+}
+@custom-variant data-closed {
+  &:where([data-state="closed"]),
+  &:where([data-closed]:not([data-closed="false"])) {
+    @slot;
+  }
+}
+@custom-variant data-checked {
+  &:where([data-state="checked"]),
+  &:where([data-checked]:not([data-checked="false"])) {
+    @slot;
+  }
+}
+@custom-variant data-unchecked {
+  &:where([data-state="unchecked"]),
+  &:where([data-unchecked]:not([data-unchecked="false"])) {
+    @slot;
+  }
+}
+
 @theme inline {
   --font-sans: "Mulish Variable", ui-sans-serif, system-ui, sans-serif;
   /* One family, as on aiatsis.gov.au: headings differ by weight (800), not by face. */
@@ -29,6 +59,7 @@
   --color-earth: var(--otdf-earth);
   --color-stone-art: var(--otdf-stone-art);
   --color-eucalyptus: var(--otdf-eucalyptus);
+  --color-eucalyptus-soft: var(--otdf-eucalyptus-soft);
   --color-flag-black: var(--otdf-flag-black);
   --color-flag-red: var(--otdf-flag-red);
   --color-flag-yellow: var(--otdf-flag-yellow);
@@ -86,6 +117,8 @@
   --otdf-earth: #33251e;
   --otdf-stone-art: #696260;
   --otdf-eucalyptus: #4f7552;
+  /* opaque pale green for "done" surfaces that sit on the artwork */
+  --otdf-eucalyptus-soft: #eef4ec;
   /* Aboriginal flag colours, used only as a thin accent stripe like the logo */
   --otdf-flag-black: #1a1a1a;
   --otdf-flag-red: #c8102e;
@@ -147,6 +180,7 @@
   --accent: #46302a;
   --accent-foreground: #ffd9c7;
   --destructive: #f2665a;
+  --otdf-eucalyptus-soft: #233127;
   --success: #86b38a;
   --success-foreground: #11190f;
   --warning: #e3a94a;
