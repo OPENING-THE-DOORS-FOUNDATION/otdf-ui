@@ -1,0 +1,219 @@
+ */
+/*
+ * OTDF UI theme.
+ *
+ * Consumers import this file once from their own Tailwind entry:
+ *   @import "otdf-ui/styles.css";
+ * The @source line below makes Tailwind scan otdf-ui's components wherever
+ * the package is installed, so their utility classes end up in the build.
+ */
+@import "@fontsource-variable/figtree";
+@import "@fontsource-variable/fraunces";
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@source "../components";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Figtree Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Fraunces Variable", ui-serif, Georgia, serif;
+
+  /* OTDF palette, usable as bg-terracotta, text-earth, border-ochre ... */
+  --color-terracotta: var(--otdf-terracotta);
+  --color-terracotta-deep: var(--otdf-terracotta-deep);
+  --color-ochre: var(--otdf-ochre);
+  --color-clay: var(--otdf-clay);
+  --color-sand: var(--otdf-sand);
+  --color-earth: var(--otdf-earth);
+  --color-stone-art: var(--otdf-stone-art);
+  --color-eucalyptus: var(--otdf-eucalyptus);
+  --color-flag-black: var(--otdf-flag-black);
+  --color-flag-red: var(--otdf-flag-red);
+  --color-flag-yellow: var(--otdf-flag-yellow);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  /* Brand colours taken from the original apply page (#bd5d38 sidebar,
+     #d48a6e borders, #de987f ribbons) and the dot painting artwork. */
+  --otdf-terracotta: #bd5d38;
+  --otdf-terracotta-deep: #93432a;
+  --otdf-ochre: #d48a6e;
+  --otdf-clay: #de987f;
+  --otdf-sand: #faf5ef;
+  --otdf-earth: #33251e;
+  --otdf-stone-art: #696260;
+  --otdf-eucalyptus: #4f7552;
+  /* Aboriginal flag colours, used only as a thin accent stripe like the logo */
+  --otdf-flag-black: #1a1a1a;
+  --otdf-flag-red: #c8102e;
+  --otdf-flag-yellow: #ffcd00;
+
+  --radius: 0.75rem;
+  --background: var(--otdf-sand);
+  --foreground: var(--otdf-earth);
+  --card: #fffdfa;
+  --card-foreground: var(--otdf-earth);
+  --popover: #fffdfa;
+  --popover-foreground: var(--otdf-earth);
+  /* White on #bd5d38 is 4.6:1, which passes WCAG AA for body text.
+     The old #d48a6e buttons were 2.9:1. */
+  --primary: var(--otdf-terracotta);
+  --primary-foreground: #ffffff;
+  --secondary: #f3e8de;
+  --secondary-foreground: var(--otdf-earth);
+  --muted: #f3ebe3;
+  --muted-foreground: #6e5b51;
+  --accent: #f8e7dd;
+  --accent-foreground: #7b3a22;
+  --destructive: #b3261e;
+  --success: var(--otdf-eucalyptus);
+  --success-foreground: #ffffff;
+  --warning: #b7791f;
+  --warning-foreground: #ffffff;
+  --border: #e9d8cb;
+  --input: #d9c2b1;
+  --ring: var(--otdf-ochre);
+  --chart-1: var(--otdf-terracotta);
+  --chart-2: var(--otdf-ochre);
+  --chart-3: var(--otdf-eucalyptus);
+  --chart-4: #d9a441;
+  --chart-5: var(--otdf-stone-art);
+  --sidebar: var(--otdf-terracotta);
+  --sidebar-foreground: #fff6f0;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: var(--otdf-terracotta-deep);
+  --sidebar-accent: rgb(255 255 255 / 0.14);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 0.2);
+  --sidebar-ring: #ffd9c7;
+}
+
+.dark {
+  --background: #1d1612;
+  --foreground: #f5ebe3;
+  --card: #271e19;
+  --card-foreground: #f5ebe3;
+  --popover: #271e19;
+  --popover-foreground: #f5ebe3;
+  --primary: #e0896a;
+  --primary-foreground: #1d1612;
+  --secondary: #3a2c24;
+  --secondary-foreground: #f5ebe3;
+  --muted: #33271f;
+  --muted-foreground: #c4ada0;
+  --accent: #46302a;
+  --accent-foreground: #ffd9c7;
+  --destructive: #f2665a;
+  --success: #86b38a;
+  --success-foreground: #11190f;
+  --warning: #e3a94a;
+  --warning-foreground: #1d1612;
+  --border: rgb(255 255 255 / 0.12);
+  --input: rgb(255 255 255 / 0.18);
+  --ring: #e0896a;
+  --sidebar: #2d1f18;
+  --sidebar-foreground: #f5ebe3;
+  --sidebar-primary: #e0896a;
+  --sidebar-primary-foreground: #1d1612;
+  --sidebar-accent: rgb(255 255 255 / 0.08);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgb(255 255 255 / 0.1);
+  --sidebar-ring: #e0896a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-heading;
+    font-optical-sizing: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* A row of painted dots, the recurring motif of the artwork. */
+  .otdf-dots {
+    background-image: radial-gradient(circle, currentColor 1.6px, transparent 2px);
+    background-size: 9px 9px;
+    background-repeat: repeat-x;
+    background-position: left center;
+  }
+  /* Thin black / red / yellow band, as on the OTDF logo. */
+  .otdf-flag-band {
+    background: linear-gradient(
+      to bottom,
+      var(--otdf-flag-black) 0 33.4%,
+      var(--otdf-flag-red) 33.4% 66.7%,
+      var(--otdf-flag-yellow) 66.7% 100%
+    );
+  }
+}
+/*
+ ---break---
+ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
